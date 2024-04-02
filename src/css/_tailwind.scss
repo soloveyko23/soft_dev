@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .block-bg {
+   @apply border-[1px] border-solid border-block-bg-20 backdrop-blur-xl;
+  }
+  .point {
+    @apply bg-[#D9D9D9] h-[.625rem] rounded-sm flex-1;
+    &.active {
+      @apply bg-gradient-to-r from-customPurple1  to-customPurple2;
+    }
+  }
+}
