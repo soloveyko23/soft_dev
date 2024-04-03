@@ -1,4 +1,3 @@
-//libraries like jquery etc
 'use strict';
 
 const removeAlertBlocks = () => {
@@ -14,57 +13,53 @@ const removeAlertBlocks = () => {
     });
   });
 }
-document.addEventListener("DOMContentLoaded", function() {
-  const links = document.querySelectorAll(".menu-navbar ul.list > li");
-  const divider = document.querySelector(".menu-navbar .divider");
-  const navbarRect = document.querySelector(".menu-navbar-wrapper").getBoundingClientRect();
-  const navbarPaddingLeft = parseFloat(window.getComputedStyle(document.querySelector(".menu-navbar-wrapper")).paddingLeft);
 
-  links.forEach(function(link) {
-    link.addEventListener("click", function() {
-      // Убираем класс "active" у всех ссылок
-      links.forEach(function(otherLink) {
-        otherLink.classList.remove("active");
+const moveDividerForMenu = () => {
+  document.addEventListener("DOMContentLoaded", function() {
+    const links = document.querySelectorAll(".menu-navbar ul.list > li");
+    const divider = document.querySelector(".menu-navbar .divider");
+    const navbarRect = document.querySelector(".menu-navbar-wrapper").getBoundingClientRect();
+    const navbarPaddingLeft = parseFloat(window.getComputedStyle(document.querySelector(".menu-navbar-wrapper")).paddingLeft);
+  
+    links.forEach(function(link) {
+      link.addEventListener("click", function() {
+        links.forEach(function(otherLink) {
+          otherLink.classList.remove("active");
+        });
+  
+        link.classList.add("active");
+  
+        updateDividerPosition(link);
       });
-
-      // Добавляем класс "active" к текущей ссылке
-      link.classList.add("active");
-
-      // Обновляем позицию дивайдера
-      updateDividerPosition(link);
-    });
-
-    link.addEventListener("mouseenter", function() {
-      // Обновляем позицию дивайдера при ховере на ссылку
-      updateDividerPosition(link);
-    });
-  });
-
-  function updateDividerPosition(link) {
-    const linkRect = link.getBoundingClientRect();
-    const linkCenter = linkRect.left - navbarRect.left - navbarPaddingLeft + linkRect.width / 2; // Учесть позицию относительно .menu-navbar без учета паддинга
-    const dividerWidth = divider.offsetWidth / 2;
-    const translateXValue = linkCenter - dividerWidth;
-    divider.style.transform = `translateX(${translateXValue}px)`;
-    divider.style.width = `${linkRect.width}px`;
-  }
-
-  // Обработчик события клика на документ для удаления класса "active" у всех ссылок при клике вне блока меню
-  document.addEventListener("click", function(event) {
-    const menuNavbar = document.querySelector(".menu-navbar-wrapper");
-    if (!menuNavbar.contains(event.target)) {
-      // Убираем класс "active" у всех ссылок
-      links.forEach(function(link) {
-        link.classList.remove("active");
+  
+      link.addEventListener("mouseenter", function() {
+        updateDividerPosition(link);
       });
+    });
+  
+    function updateDividerPosition(link) {
+      const linkRect = link.getBoundingClientRect();
+      const linkCenter = linkRect.left - navbarRect.left - navbarPaddingLeft + linkRect.width / 2;
+      const dividerWidth = divider.offsetWidth / 2;
+      const translateXValue = linkCenter - dividerWidth;
+      divider.style.transform = `translateX(${translateXValue}px)`;
+      divider.style.width = `${linkRect.width}px`;
     }
+  
+
+    document.addEventListener("click", function(event) {
+      const menuNavbar = document.querySelector(".menu-navbar-wrapper");
+      if (!menuNavbar.contains(event.target)) {
+        links.forEach(function(link) {
+          link.classList.remove("active");
+        });
+      }
+    });
   });
-});
+}
 
-
-
-
-const compassInput = document.getElementById('compassInput');
+const testCompass = () => {
+  const compassInput = document.getElementById('compassInput');
 const compassLimb = document.querySelector('.compass-limb');
 const directionLabel = document.getElementById('directionLabel');
 
@@ -96,10 +91,57 @@ compassInput.addEventListener('input', function() {
 
   directionLabel.textContent = direction;
 });
+};
 
 
 
+const initializeSlider = () => {
+  const slider = document.getElementById('speed-range');
+  const arrow = document.querySelector('.arrow-speed');
+  const speedValue = document.getElementById('speed');
+
+  noUiSlider.create(slider, {
+    start: [0],
+    direction: 'rtl',
+    orientation: "vertical",
+    connect: true,
+    step: 10,
+    pips: {
+      mode: 'steps',
+      values: [0, 150],
+      density: 1,
+    },
+    range: {
+      'min': 0,
+      'max': 150,
+    }
+  });
+
+  slider.noUiSlider.on('update', function (values, handle) {
+    const activeValue = parseInt(values[handle]); 
+    const pips = document.querySelectorAll('.noUi-value'); 
+    pips.forEach(function (pip) {
+      const pipValue = parseInt(pip.getAttribute('data-value')); 
+      if (pipValue <= activeValue) { 
+        pip.classList.add('active'); 
+      } else {
+        pip.classList.remove('active'); 
+      }
+    });
+
+    const angle = (activeValue / 150) * (495 - 225) + 225; 
+    arrow.style.transform = 'rotate(' + angle + 'deg)';
+
+    const handleElement = document.querySelector('.noUi-handle');
+    const ariaValueNow = handleElement.getAttribute('aria-valuenow');
+    
+    speedValue.textContent = `${parseInt(ariaValueNow)} m/s`;
+  });
+};
 
 
 
+initializeSlider();
 removeAlertBlocks();
+moveDividerForMenu();
+testCompass();

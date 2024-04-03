@@ -2,20 +2,20 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Gulp with TailwindCSS v3</title>
+ 
     <link rel="stylesheet" type="text/css" href="./css/style.css" />
   </head>
   <body class="bg-gray-50">
     <main class="view-screen min-h-screen">
-      <div class="view-screen__background">
-        <img srcset="img/map-view_2x.jpg 2x"
-        src="img/map-view.jpg" alt="Background">
+      <div class="view-screen__background z-10" id="map">
+        
       </div>
-      <div class="view-screen__body flex flex-col justify-between gap-5 absolute top-0 left-0 w-full h-full p-5">
+      <div class="view-screen__body max-w-[90rem] mx-auto flex flex-col justify-between gap-5 absolute inset-0 w-full h-full p-5">
         <div class="view-screen__header flex justify-between gap-10 w-full">
-          <div class="alert-block flex flex-col gap-3 flex-[0_1_375px] max-w-[23.4375rem] min-w-[23.4375rem]">
+          <div class="alert-block flex flex-col gap-3 flex-[0_1_375px] max-w-[23.4375rem] min-w-[23.4375rem] z-20">
             <div class="alert-block__row rounded-xl transition-all inline-flex  gap-3 block-bg bg-pot-black/60 p-5 pr-8">
               <div class="alert-block__icon p-2 mt-1 rounded-md bg-white/20 inline-flex items-center justify-center w-10 h-10">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="21" viewBox="0 0 24 21" fill="none">
@@ -55,7 +55,7 @@
               </button>
             </div>
           </div>
-          <nav class="menu-navbar relative flex justify-center -top-5 flex-1 max-h-max h-max">
+          <nav class="menu-navbar relative flex justify-center -top-5 flex-1 max-h-max h-max z-20">
             <div class="menu-navbar-wrapper relative p-5 rounded-b-2xl h-max">
               <ul class="list flex items-center gap-3 max-w-max">
                 <li class="relative">
@@ -383,7 +383,7 @@
               </div>
             </div>
           </nav>
-          <div class="flex-[0_1_375px] flex flex-col items-end max-w-[23.4375rem] min-w-[23.4375rem]">
+          <div class="flex-[0_1_375px] flex flex-col items-end max-w-[23.4375rem] min-w-[23.4375rem] z-20">
             <div class="block-bg bg-pot-black/40 p-2 h-max inline-flex items-center gap-3 rounded-lg min-h-[2.75rem] min-w-[5.5rem]">
            
               <div class="battery">
@@ -398,8 +398,8 @@
           </div>
         
         </div>
-        <div class="view-screen__footer">
-          <div class="row mb-6">
+        <div class="view-screen__footer absolute bottom-5 left-5 right-5">
+          <div class="row mb-6 z-20 relative max-w-max">
             <div class="block-bg p-5 bg-pot-black/50 rounded-xl max-w-max flex-[0_1_12.625rem]">
               <a href="#" class="switch-view relative max-w-max inline-block mb-3">
                 <div class="switch-view__preview preview overflow-hidden rounded-md w-[10.875rem] h-[10.875rem]">
@@ -444,7 +444,7 @@
               </div>
             </div>
           </div>
-          <div class="row flex gap-6">
+          <div class="row flex gap-6 z-20 relative max-w-max">
             <div class="block-bg p-5 bg-pot-black/50 rounded-xl max-w-max flex-[0_1_12.625rem]">
              
               <div class="line flex items-center gap-3 mb-3">
@@ -581,17 +581,17 @@
                 <input type="range" min="0" max="360" value="0" class="compass-input" id="compassInput">
               </div>
             </div>
-            <div class="block-bg p-5 bg-pot-black/50 rounded-xl max-w-max flex-[0_1_12.625rem]">
+            <div class="block-bg p-5 pr-10 pb-10 bg-pot-black/50 rounded-xl max-w-max flex-[0_1_12.625rem]">
               <h6 class="text-white text-2xl mb-3 text-center mt-1">Speed</h6>
               <button type="button" class="widget-minus absolute top-3 right-3">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                   <path d="M12 2C6.48584 2 2 6.48584 2 12C2 17.5142 6.48584 22 12 22C17.5142 22 22 17.5142 22 12C22 6.48584 17.5142 2 12 2ZM17 13H7C6.44775 13 6 12.5522 6 12C6 11.4478 6.44775 11 7 11H17C17.5522 11 18 11.4478 18 12C18 12.5522 17.5522 13 17 13Z" fill="white"/>
                   </svg>
               </button>
-              <div class="speedmeter">
+              <div class="speedmeter flex gap-8 items-center">
                 <div class="speedmeter-content relative">
                   <div class="speed-svg">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="160" height="160" viewBox="0 0 160 160" fill="none">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="190" height="190" viewBox="0 0 160 160" fill="none">
                       <path d="M23.4315 136.569C12.2433 125.38 4.62399 111.126 1.53718 95.6072C-1.54964 80.0887 0.0346269 64.0034 6.08964 49.3853C12.1446 34.7672 22.3984 22.2729 35.5544 13.4824C48.7103 4.69192 64.1775 -1.88681e-07 80 0C95.8225 1.88681e-07 111.29 4.69192 124.446 13.4824C137.602 22.2729 147.855 34.7672 153.91 49.3853C159.965 64.0034 161.55 80.0887 158.463 95.6072C155.376 111.126 147.757 125.38 136.569 136.569L130.912 130.912C140.981 120.842 147.838 108.013 150.617 94.0465C153.395 80.0799 151.969 65.6031 146.519 52.4468C141.07 39.2905 131.841 28.0457 120.001 20.1342C108.161 12.2227 94.2403 8 80 8C65.7597 8 51.8393 12.2227 39.9989 20.1342C28.1586 28.0456 18.9302 39.2905 13.4807 52.4468C8.03116 65.6031 6.60532 80.0799 9.38346 94.0465C12.1616 108.013 19.0189 120.842 29.0883 130.912L23.4315 136.569Z" fill="white" fill-opacity="0.1"/>
                       <path d="M23.4315 136.569C12.2433 125.38 4.62399 111.126 1.53718 95.6072C-1.54964 80.0887 0.0346269 64.0034 6.08964 49.3853C12.1446 34.7672 22.3984 22.2729 35.5544 13.4824C48.7103 4.69192 64.1775 -1.88681e-07 80 0C95.8225 1.88681e-07 111.29 4.69192 124.446 13.4824C137.602 22.2729 147.855 34.7672 153.91 49.3853C159.965 64.0034 161.55 80.0887 158.463 95.6072C155.376 111.126 147.757 125.38 136.569 136.569L130.912 130.912C140.981 120.842 147.838 108.013 150.617 94.0465C153.395 80.0799 151.969 65.6031 146.519 52.4468C141.07 39.2905 131.841 28.0457 120.001 20.1342C108.161 12.2227 94.2403 8 80 8C65.7597 8 51.8393 12.2227 39.9989 20.1342C28.1586 28.0456 18.9302 39.2905 13.4807 52.4468C8.03116 65.6031 6.60532 80.0799 9.38346 94.0465C12.1616 108.013 19.0189 120.842 29.0883 130.912L23.4315 136.569Z" fill="url(#paint0_angular_4722_44122)"/>
                       <path d="M46.336 118.156C48.004 118.156 49.072 116.632 49.072 113.572C49.072 110.524 48.004 109.036 46.336 109.036C44.656 109.036 43.588 110.512 43.588 113.572C43.588 116.632 44.656 118.156 46.336 118.156ZM46.336 117.28C45.328 117.28 44.656 116.164 44.656 113.572C44.656 111.004 45.328 109.924 46.336 109.924C47.332 109.924 48.004 111.004 48.004 113.572C48.004 116.164 47.332 117.28 46.336 117.28Z" fill="white" fill-opacity="0.6"/>
@@ -618,7 +618,7 @@
                       </svg>
                   </div>
                   <div class="arrow-speed absolute top-0 left-0">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="160" height="160" viewBox="0 0 164 164" fill="none">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="190" height="190" viewBox="0 0 164 164" fill="none">
                       <path d="M82.1289 92.8573L81.5832 47.4676L78.6775 83.7098L82.1289 92.8573Z" fill="url(#paint0_linear_4722_44140)"/>
                       <path d="M82.1289 92.8573L81.5832 47.4676L85.3594 83.6295L82.1289 92.8573Z" fill="url(#paint1_linear_4722_44140)"/>
                       <g filter="url(#filter0_d_4722_44140)">
@@ -646,11 +646,24 @@
                       </defs>
                       </svg>
                   </div>
-                  <h5 id="speed">100</h5>
+                  <h5 id="speed" class="text-white text-xl absolute bottom-0 left-2/4 -translate-x-2/4">0 m/s</h5>
                  
                 </div>
-                <div class="speedmeter-range">
-                  
+                <div class="speedmeter-range relative">
+                  <div class="speedmeter-range-icon absolute -left-1 -top-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="60" height="61" viewBox="0 0 60 61" fill="none">
+                      <rect x="0.5" y="0.75" width="59" height="59" rx="29.5" fill="white"/>
+                      <rect x="0.5" y="0.75" width="59" height="59" rx="29.5" stroke="black"/>
+                      <rect x="5.5" y="5.75" width="49" height="49" rx="24.5" fill="#F9D448"/>
+                      <rect x="5.5" y="5.75" width="49" height="49" rx="24.5" stroke="#212121"/>
+                      <path d="M30.0439 31.0003L37.0308 36.0797C37.04 36.0864 37.0476 36.0952 37.0527 36.1053C37.0579 36.1155 37.0606 36.1268 37.0605 36.1382V40.5288C37.0607 40.5422 37.0571 40.5554 37.0501 40.5669C37.0432 40.5783 37.0332 40.5876 37.0212 40.5937C37.0093 40.5998 36.9959 40.6024 36.9825 40.6013C36.9691 40.6002 36.9563 40.5953 36.9456 40.5873L30.0439 35.5661C30.0315 35.557 30.0166 35.5521 30.0013 35.5521C29.986 35.5521 29.9711 35.557 29.9587 35.5661L23.0522 40.5873C23.0415 40.5953 23.0287 40.6001 23.0154 40.6011C23.002 40.6022 22.9887 40.5996 22.9768 40.5935C22.9649 40.5874 22.9549 40.5782 22.9479 40.5667C22.941 40.5553 22.9374 40.5422 22.9375 40.5288V36.1421C22.9375 36.1306 22.9401 36.1194 22.9453 36.1092C22.9505 36.099 22.958 36.0902 22.9673 36.0835L29.9587 31.0003C29.9711 30.9912 29.986 30.9863 30.0013 30.9863C30.0166 30.9863 30.0315 30.9912 30.0439 31.0003Z" fill="#0C7D02" fill-opacity="0.2"/>
+                      <path d="M30.0214 24.9602L35.9683 29.2828C35.9727 29.2861 35.9763 29.2903 35.9788 29.2952C35.9812 29.3001 35.9825 29.3055 35.9825 29.3109V33.0981C35.9825 33.1045 35.9807 33.1108 35.9773 33.1163C35.974 33.1217 35.9692 33.1261 35.9635 33.129C35.9578 33.1319 35.9514 33.1332 35.945 33.1327C35.9386 33.1322 35.9325 33.13 35.9273 33.1262L30.0214 28.8302C30.0155 28.8259 30.0083 28.8235 30.001 28.8235C29.9936 28.8235 29.9865 28.8259 29.9806 28.8302L24.0708 33.1262C24.0656 33.13 24.0595 33.1322 24.0531 33.1327C24.0467 33.1332 24.0404 33.1319 24.0346 33.129C24.0289 33.1261 24.0241 33.1217 24.0208 33.1163C24.0174 33.1108 24.0156 33.1045 24.0156 33.0981V29.3143C24.0156 29.3088 24.0169 29.3034 24.0194 29.2986C24.0218 29.2937 24.0254 29.2894 24.0298 29.2862L29.9818 24.9595C29.9877 24.9555 29.9946 24.9535 30.0017 24.9536C30.0088 24.9537 30.0157 24.956 30.0214 24.9602Z" fill="#0C7D02" fill-opacity="0.6"/>
+                      <path d="M30.0001 19.899L34.9852 23.5225V26.75L30.0001 23.1231L25.0117 26.75V23.5258L30.0001 19.899Z" fill="#0C7D02"/>
+                      </svg>
+                  </div>
+                  <div id="speed-range">
+
+                  </div>
                 </div>
               </div>
             </div>
@@ -699,7 +712,7 @@
                 </div>
               </div>
             </div>
-            <div class="block-bg p-5 bg-pot-black/50 rounded-xl max-w-max flex-[0_1_25.75rem]">
+            <div class="block-bg p-5 bg-pot-black/50 rounded-xl max-w-max min-w-[11.875rem] flex-[0_0_25.75rem]">
               <h6 class="text-white text-2xl mb-3 mt-3">Altitude</h6>
               
               <button type="button" class="widget-minus absolute top-3 right-3">
@@ -707,13 +720,60 @@
                   <path d="M12 2C6.48584 2 2 6.48584 2 12C2 17.5142 6.48584 22 12 22C17.5142 22 22 17.5142 22 12C22 6.48584 17.5142 2 12 2ZM17 13H7C6.44775 13 6 12.5522 6 12C6 11.4478 6.44775 11 7 11H17C17.5522 11 18 11.4478 18 12C18 12.5522 17.5522 13 17 13Z" fill="white"/>
                   </svg>
               </button>
-             
+              <div class="flex justify-center">
+                <div class="altitude-block">
+                  <div class="altitude-pips">
+                    <div class="altitude-values">
+                      <div class="altitude-value altitude-value--big"></div>
+                      <div class="altitude-value altitude-value--big"></div>
+                      <div class="altitude-value"></div>
+                      <div class="altitude-value"></div>
+                      <div class="altitude-value"></div>
+                      <div class="altitude-value altitude-value--big"></div>
+                      <div class="altitude-value"></div>
+                      <div class="altitude-value"></div>
+                      <div class="altitude-value altitude-value--big"></div>
+                      <div class="altitude-value"></div>
+                      <div class="altitude-value"></div>
+                      <div class="altitude-value altitude-value--big"></div>
+                      <div class="altitude-value"></div>
+                    </div>
+                    <div class="altitude-markers">
+                      <div class="altitude-marker" style="top: 2%">
+                        300
+                      </div>
+                      <div class="altitude-marker" style="top: 18%">
+                        200
+                      </div>
+                      <div class="altitude-marker" style="top: 26%">
+                        100 
+                      </div>
+                      <div class="altitude-marker" style="top: 33%">
+                        0
+                      </div>
+                    </div>
+                  
+                  </div>
+                  <div class="altitude-range">
+                    <span style="height: 30%;"></span>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </main>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDkN6ve5BiNxVyzP4vXArjbVDEbrdcS2uc&callback=initMap" async defer></script>
+    <script>
+      function initMap() {
+        var uluru = {lat: -25.344, lng: 131.036};
+        var map = new google.maps.Map(document.getElementById('map'), {zoom: 4, center: uluru});
+        var marker = new google.maps.Marker({position: uluru, map: map});
+      }
 
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.7.1/nouislider.min.js"></script>
     <script src="./js/scripts.js"></script>
   </body>
 </html>

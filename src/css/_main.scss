@@ -2,12 +2,10 @@
 @import url('https://fonts.googleapis.com/css?family=Poppins:regular,500,600,700');
 
 .view-screen {
-  @apply relative max-w-[90rem] mx-auto;
+  @apply relative mx-auto;
   &__background {
-    @apply absolute inset-0; 
-    img {
-      @apply w-full h-full object-cover; 
-    }
+    @apply w-full h-full min-h-screen z-10; 
+    
   }
   .menu-navbar-wrapper {
     .list {
@@ -126,6 +124,74 @@
   
     img {
       @apply w-full h-full transition-all object-cover rounded-md;
+    }
+  }
+  .speedmeter-range {
+    @apply rounded-md pb-3 pt-14 h-max shadow-none border-none w-[3.125rem] bg-[#000702];
+  }
+  .noUi-target {
+    @apply rounded-md shadow-none border-none h-44 w-[3.125rem] bg-[#000702];
+    .noUi-marker {
+      @apply hidden;
+    }
+    .noUi-value {
+      @apply bg-white/30 rounded-sm h-1.5 w-10 left-2/4 -translate-x-2/4 text-[0px];
+      &.active {
+        background: linear-gradient(90deg, rgba(47,172,255,1) 0%, rgba(5,81,255,1) 100%);
+      }
+    }
+    .noUi-pips-vertical {
+      @apply w-full h-full p-0 left-0;
+    }
+    .noUi-handle {
+      @apply shadow-none border-none bg-transparent w-16 cursor-grab -bottom-1.5;
+    }
+    .noUi-handle:before {
+      content: '';
+      background: url('../img/lever.svg') 0 0 no-repeat;
+      width: 5.3125rem;
+      left: -10px;
+      height: 2.1875rem;
+    }
+    .noUi-handle:after {
+     @apply hidden;
+    }
+    
+  }
+  .altitude-block {
+    @apply max-w-max relative flex items-center justify-center gap-3;
+    .altitude-values {
+      height: 100%;
+      width: 60%;
+      position: absolute;
+      top: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .altitude-pips {
+      width: 30px;
+      height: 100%;
+    }
+    .altitude-range {
+      @apply flex items-center flex-col justify-end bg-white w-2 rounded-lg h-36;
+      span {
+        background: linear-gradient(0deg, rgba(47,172,255,1) 0%, rgba(5,81,255,1) 100%);
+        @apply block w-2 rounded-lg block;
+      }
+    }
+    .altitude-value {
+      @apply bg-white rounded-sm h-0.5 w-2/4;
+      &--big {
+        @apply w-full;
+      }
+    }
+
+    .altitude-markers {
+      @apply absolute -left-10 h-full text-right text-white;
+    }
+    .altitude-marker {
+      @apply relative;
     }
   }
 }
