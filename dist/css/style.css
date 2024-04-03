@@ -642,9 +642,15 @@ select{
 .z-20{
   z-index: 20;
 }
+.z-30{
+  z-index: 30;
+}
 .mx-auto{
   margin-left: auto;
   margin-right: auto;
+}
+.-ml-6{
+  margin-left: -1.5rem;
 }
 .mb-2{
   margin-bottom: 0.5rem;
@@ -657,6 +663,9 @@ select{
 }
 .ml-2{
   margin-left: 0.5rem;
+}
+.ml-6{
+  margin-left: 1.5rem;
 }
 .mt-1{
   margin-top: 0.25rem;
@@ -687,6 +696,9 @@ select{
 }
 .grid{
   display: grid;
+}
+.hidden{
+  display: none;
 }
 .h-1{
   height: 0.25rem;
@@ -1377,6 +1389,12 @@ select{
   visibility: visible;
   pointer-events: auto;
 }
+.view-screen .menu-navbar-wrapper .list li .hide-widgets.active .svg-default {
+  display: none;
+}
+.view-screen .menu-navbar-wrapper .list li .hide-widgets.active .svg-active {
+  display: block;
+}
 .view-screen .menu-navbar-wrapper .list li .block-bg {
   transition: all 0.3s;
 }
@@ -1476,6 +1494,65 @@ select{
   height: 0.125rem;
   width: 100%;
   background: linear-gradient(90deg, rgba(2, 0, 36, 0) 0%, rgb(255, 255, 255) 50%, rgba(0, 0, 0, 0) 100%);
+}
+.view-screen .widget {
+  overflow: hidden;
+}
+.view-screen .widget.hide {
+  height: -moz-max-content;
+  height: max-content;
+  align-self: flex-end;
+  padding: 1.25rem;
+}
+.view-screen .widget.hide .widget-body {
+  opacity: 0;
+  height: 0;
+  overflow: hidden;
+}
+.view-screen .widget.hide .widget-close::after {
+  opacity: 1;
+  transform: rotate(180deg) translate(30%, 50%);
+}
+.view-screen .widget.hide h6 {
+  margin: 0px 0 0 0;
+  text-align: left;
+  padding-right: 20px;
+}
+.view-screen .widget-close {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background-color: #fff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.view-screen .widget-close::before, .view-screen .widget-close::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.view-screen .widget-close::before {
+  content: "";
+  width: 60%;
+  height: 2px;
+  background-color: rgb(23 22 22 / 0.5);
+  border-radius: 0.25rem;
+}
+.view-screen .widget-close::after {
+  content: "";
+  height: 60%;
+  width: 2px;
+  display: block;
+  border-radius: 0.25rem;
+  background-color: rgb(23 22 22 / 0.5);
+  opacity: 0;
+  transform: rotate(0deg) translate(30%, 50%);
+}
+.view-screen .widget-body {
+  height: auto;
 }
 .view-screen .preview{
   position: relative;

@@ -100,6 +100,9 @@ const initializeSlider = () => {
   const arrow = document.querySelector('.arrow-speed');
   const speedValue = document.getElementById('speed');
 
+  const incrementButton = document.querySelector('.speedmeter-range-icon');
+  let isClickPending = false;
+
   noUiSlider.create(slider, {
     start: [0],
     direction: 'rtl',
@@ -137,9 +140,47 @@ const initializeSlider = () => {
     
     speedValue.textContent = `${parseInt(ariaValueNow)} m/s`;
   });
+
+  incrementButton.addEventListener('click', function() {
+    if (!isClickPending) {
+      isClickPending = true;
+      
+      const handleElement = document.querySelector('.noUi-handle');
+      const currentValue = parseInt(handleElement.getAttribute('aria-valuenow'));
+      const newValue = currentValue + 10;
+      slider.noUiSlider.set(newValue);
+      isClickPending = false;
+    }
+  });
 };
 
 
+document.addEventListener("DOMContentLoaded", function() {
+  const widgets = document.querySelectorAll('.widget');
+  
+  widgets.forEach(function(widget) {
+    const closeButton = widget.querySelector('.widget-close');
+    if (closeButton) {
+      closeButton.addEventListener('click', function(event) {
+        widget.classList.toggle('hide')
+        const widgetBody = widget.querySelector('.widget-body');
+        if (widgetBody) {
+          slideToggle(widgetBody);
+        }
+      });
+    }
+  });
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+  const hideButton = document.querySelector('.hide-widgets');
+  const footer = document.querySelector('.view-screen__footer');
+  
+  hideButton.addEventListener('click', () => {
+    hideButton.classList.toggle('active');
+    footer.classList.toggle('hidden');
+  });
+});
 
 initializeSlider();
 removeAlertBlocks();
