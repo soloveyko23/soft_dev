@@ -682,6 +682,9 @@ select{
 .mt-4{
   margin-top: 1rem;
 }
+.-ml-1{
+  margin-left: -0.25rem;
+}
 .block{
   display: block;
 }
@@ -734,6 +737,12 @@ select{
   height: -moz-max-content;
   height: max-content;
 }
+.h-5{
+  height: 1.25rem;
+}
+.h-6{
+  height: 1.5rem;
+}
 .max-h-max{
   max-height: -moz-max-content;
   max-height: max-content;
@@ -775,6 +784,12 @@ select{
   width: -moz-max-content;
   width: max-content;
 }
+.w-5{
+  width: 1.25rem;
+}
+.w-6{
+  width: 1.5rem;
+}
 .min-w-\[11\.875rem\]{
   min-width: 11.875rem;
 }
@@ -783,6 +798,15 @@ select{
 }
 .min-w-\[5\.5rem\]{
   min-width: 5.5rem;
+}
+.min-w-\[12\.625rem\]{
+  min-width: 12.625rem;
+}
+.min-w-\[em\]{
+  min-width: em;
+}
+.min-w-\[12\.75rem\]{
+  min-width: 12.75rem;
 }
 .max-w-\[23\.4375rem\]{
   max-width: 23.4375rem;
@@ -1497,6 +1521,9 @@ select{
 }
 .view-screen .widget {
   overflow: hidden;
+}
+.view-screen .widget:not(.hide) {
+  min-height: 22.1875rem;
 }
 .view-screen .widget.hide {
   height: -moz-max-content;

@@ -125,6 +125,9 @@
   .widget {
     // height: max-content;
     overflow: hidden;
+    &:not(.hide) {
+      min-height: 22.1875rem;
+    }
     &.hide {
       height: max-content;
       align-self: flex-end;

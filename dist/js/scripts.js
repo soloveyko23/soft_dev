@@ -182,6 +182,47 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
+let timerDisplay = document.getElementById('timer');
+let startBtn = document.querySelector('.start-btn');
+let pauseBtn = document.querySelector('.pause-btn');
+let stopBtn = document.querySelector('.stop-btn');
+let timerInterval;
+let timeInSeconds = 0;
+
+function startTimer() {
+    timerInterval = setInterval(function() {
+        timeInSeconds++;
+        updateTimerDisplay();
+    }, 1000);
+
+    startBtn.classList.add('hidden');
+    pauseBtn.classList.remove('hidden');
+}
+
+function pauseTimer() {
+    clearInterval(timerInterval);
+    startBtn.classList.remove('hidden');
+    pauseBtn.classList.add('hidden');
+}
+
+function stopTimer() {
+    clearInterval(timerInterval);
+    timeInSeconds = 0;
+    updateTimerDisplay();
+    startBtn.classList.remove('hidden');
+    pauseBtn.classList.add('hidden');
+}
+
+function updateTimerDisplay() {
+    const minutes = Math.floor(timeInSeconds / 60);
+    const seconds = timeInSeconds % 60;
+    timerDisplay.textContent = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+}
+
+startBtn.addEventListener('click', startTimer);
+pauseBtn.addEventListener('click', pauseTimer);
+stopBtn.addEventListener('click', stopTimer);
+
 initializeSlider();
 removeAlertBlocks();
 moveDividerForMenu();
