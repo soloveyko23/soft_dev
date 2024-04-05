@@ -649,6 +649,9 @@ select{
   margin-left: auto;
   margin-right: auto;
 }
+.-ml-1{
+  margin-left: -0.25rem;
+}
 .-ml-6{
   margin-left: -1.5rem;
 }
@@ -681,9 +684,6 @@ select{
 }
 .mt-4{
   margin-top: 1rem;
-}
-.-ml-1{
-  margin-left: -0.25rem;
 }
 .block{
   display: block;
@@ -721,6 +721,9 @@ select{
 .h-4\/6{
   height: 66.666667%;
 }
+.h-6{
+  height: 1.5rem;
+}
 .h-9{
   height: 2.25rem;
 }
@@ -736,12 +739,6 @@ select{
 .h-max{
   height: -moz-max-content;
   height: max-content;
-}
-.h-5{
-  height: 1.25rem;
-}
-.h-6{
-  height: 1.5rem;
 }
 .max-h-max{
   max-height: -moz-max-content;
@@ -765,6 +762,9 @@ select{
 .w-2\.5{
   width: 0.625rem;
 }
+.w-6{
+  width: 1.5rem;
+}
 .w-9{
   width: 2.25rem;
 }
@@ -784,29 +784,23 @@ select{
   width: -moz-max-content;
   width: max-content;
 }
-.w-5{
-  width: 1.25rem;
-}
-.w-6{
-  width: 1.5rem;
-}
 .min-w-\[11\.875rem\]{
   min-width: 11.875rem;
+}
+.min-w-\[12\.75rem\]{
+  min-width: 12.75rem;
+}
+.min-w-\[21\.25rem\]{
+  min-width: 21.25rem;
+}
+.min-w-\[23\.125rem\]{
+  min-width: 23.125rem;
 }
 .min-w-\[23\.4375rem\]{
   min-width: 23.4375rem;
 }
 .min-w-\[5\.5rem\]{
   min-width: 5.5rem;
-}
-.min-w-\[12\.625rem\]{
-  min-width: 12.625rem;
-}
-.min-w-\[em\]{
-  min-width: em;
-}
-.min-w-\[12\.75rem\]{
-  min-width: 12.75rem;
 }
 .max-w-\[23\.4375rem\]{
   max-width: 23.4375rem;
@@ -966,11 +960,17 @@ select{
 .pb-1\.5{
   padding-bottom: 0.375rem;
 }
-.pb-10{
-  padding-bottom: 2.5rem;
+.pb-3{
+  padding-bottom: 0.75rem;
 }
-.pr-10{
-  padding-right: 2.5rem;
+.pb-6{
+  padding-bottom: 1.5rem;
+}
+.pr-4{
+  padding-right: 1rem;
+}
+.pr-6{
+  padding-right: 1.5rem;
 }
 .pr-8{
   padding-right: 2rem;
@@ -980,6 +980,9 @@ select{
 }
 .pt-1\.5{
   padding-top: 0.375rem;
+}
+.pt-4{
+  padding-top: 1rem;
 }
 .text-center{
   text-align: center;
@@ -1520,21 +1523,12 @@ select{
   background: linear-gradient(90deg, rgba(2, 0, 36, 0) 0%, rgb(255, 255, 255) 50%, rgba(0, 0, 0, 0) 100%);
 }
 .view-screen .widget {
-  overflow: hidden;
-}
-.view-screen .widget:not(.hide) {
-  min-height: 22.1875rem;
+  transition: all 0.5s;
+  min-height: 23.125rem;
 }
 .view-screen .widget.hide {
-  height: -moz-max-content;
-  height: max-content;
-  align-self: flex-end;
-  padding: 1.25rem;
-}
-.view-screen .widget.hide .widget-body {
-  opacity: 0;
-  height: 0;
-  overflow: hidden;
+  min-height: 0;
+  transition: all 0.5s;
 }
 .view-screen .widget.hide .widget-close::after {
   opacity: 1;
@@ -1577,9 +1571,6 @@ select{
   background-color: rgb(23 22 22 / 0.5);
   opacity: 0;
   transform: rotate(0deg) translate(30%, 50%);
-}
-.view-screen .widget-body {
-  height: auto;
 }
 .view-screen .preview{
   position: relative;
@@ -1702,6 +1693,7 @@ select{
   flex-direction: column;
   align-items: center;
   justify-content: flex-end;
+  overflow: hidden;
   border-radius: 0.5rem;
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
@@ -1710,7 +1702,6 @@ select{
   background: linear-gradient(0deg, rgb(47, 172, 255) 0%, rgb(5, 81, 255) 100%);
   display: block;
   width: 0.5rem;
-  border-radius: 0.5rem;
 }
 .view-screen .altitude-block .altitude-value{
   height: 0.125rem;

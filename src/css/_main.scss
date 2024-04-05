@@ -123,26 +123,18 @@
     }
   }
   .widget {
-    // height: max-content;
-    overflow: hidden;
-    &:not(.hide) {
-      min-height: 22.1875rem;
-    }
+    transition: all 0.5s;
+    min-height: 23.125rem;
     &.hide {
-      height: max-content;
-      align-self: flex-end;
-      padding: 1.25rem;
-      .widget-body {
-        opacity: 0;
-        height: 0;
-        overflow: hidden;
-      }
+      min-height: 0;
+      transition: all 0.5s;
       .widget-close {
         &::after{
           opacity: 1;
           transform: rotate(180deg) translate(30%, 50%);  
         }
       }
+     
       h6 {
         margin: 0px 0 0 0;
         text-align: left;
@@ -185,9 +177,7 @@
         transform: rotate(0deg) translate(30%, 50%);
       }
     }
-    &-body {
-      height: auto;
-    }
+   
   }
   .preview {
     @apply relative rounded-md;
@@ -248,10 +238,10 @@
       height: 100%;
     }
     .altitude-range {
-      @apply flex items-center flex-col justify-end bg-white w-2 rounded-lg h-36;
+      @apply flex items-center flex-col justify-end bg-white w-2 rounded-lg h-36 overflow-hidden;
       span {
         background: linear-gradient(0deg, rgba(47,172,255,1) 0%, rgba(5,81,255,1) 100%);
-        @apply block w-2 rounded-lg block;
+        @apply block w-2 block;
       }
     }
     .altitude-value {
