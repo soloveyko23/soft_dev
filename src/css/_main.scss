@@ -180,21 +180,21 @@
    
   }
   .preview {
-    @apply relative rounded-md;
+    @apply relative rounded-xs;
     &::before{
       content:'';
-      @apply absolute inset-0 block w-full z-[1] h-full bg-black/30 rounded-md;
+      @apply absolute inset-0 block w-full z-[1] h-full bg-black/30 rounded-xs;
     }
   
     img {
-      @apply w-full h-full transition-all object-cover rounded-md;
+      @apply w-full h-full transition-all object-cover rounded-xs;
     }
   }
   .speedmeter-range {
-    @apply rounded-md pb-3 pt-14 h-max shadow-none border-none w-[3.125rem] bg-[#000702];
+    @apply rounded-xs pb-3 pt-14 h-max shadow-none border-none w-[3.125rem] bg-[#000702];
   }
   .noUi-target {
-    @apply rounded-md shadow-none border-none h-44 w-[3.125rem] bg-[#000702];
+    @apply rounded-xs shadow-none border-none h-44 w-[3.125rem] bg-[#000702];
     .noUi-marker {
       @apply hidden;
     }

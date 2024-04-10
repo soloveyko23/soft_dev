@@ -239,7 +239,41 @@ widgets.forEach(function(widget) {
   }
 });
 
+document.addEventListener("DOMContentLoaded", function() {
+  var imageView = document.getElementById('view-image');
+  var currentSrc = imageView.getAttribute('src');
+  var map = document.getElementById('map');
+  var backgroundImage = document.getElementById('background-image');
+  if (currentSrc === 'img/widget-pic-real.jpg') {
+    map.classList.remove('background-image');
+    map.classList.add('hidden');
+    backgroundImage.classList.remove('hidden');
+  } else {
+    map.classList.add('background-image');
+    map.classList.remove('hidden');
+    backgroundImage.classList.add('hidden');
+  }
+});
 
+document.querySelector('.switch-view').addEventListener('click', function(event) {
+  event.preventDefault(); // Prevent default action of anchor tag
+  var imageView = document.getElementById('view-image');
+  var currentSrc = imageView.getAttribute('src');
+  var newSrc = currentSrc === 'img/widget-pic-real.jpg' ? 'img/widget-pic-other.jpg' : 'img/widget-pic-real.jpg';
+  imageView.setAttribute('src', newSrc);
+
+  var map = document.getElementById('map');
+  var backgroundImage = document.getElementById('background-image');
+  if (newSrc === 'img/widget-pic-real.jpg') {
+    map.classList.remove('background-image');
+    map.classList.add('hidden');
+    backgroundImage.classList.remove('hidden');
+  } else {
+    map.classList.add('background-image');
+    map.classList.remove('hidden');
+    backgroundImage.classList.add('hidden');
+  }
+});
 
 // =========== old
 
