@@ -93,11 +93,11 @@
                             <path fill-rule="evenodd" clip-rule="evenodd" d="M2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12ZM14 8C14.5523 8 15 8.44772 15 9L15 15C15 15.5523 14.5523 16 14 16C13.4477 16 13 15.5523 13 15L13 9C13 8.44772 13.4477 8 14 8ZM10 8C10.5523 8 11 8.44772 11 9L11 15C11 15.5523 10.5523 16 10 16C9.44771 16 9 15.5523 9 15L9 9C9 8.44772 9.44772 8 10 8Z" fill="#fff"/>
                           </svg>
                         </button>
-                        <p class="text-xs text-white mt-1 -ml-1" id="timer">
+                        <p class="text-xs text-white mt-1 -ml-1 min-w-[30px]" id="timer">
                           00:00
                         </p>
                         <button type="button" class="stop-btn record-video">
-                          <span class="rounded-sm w-2.5 h-2.5 block bg-[#FF4F4F]"></span>
+                          <span class="rounded-[.125rem] w-2.5 h-2.5 block bg-[#FF4F4F]"></span>
                         </button>
                       </div>
                     </div>
@@ -755,19 +755,19 @@
                   <div class="altitude-block">
                     <div class="altitude-pips">
                       <div class="altitude-values">
-                        <div class="altitude-value altitude-value--big"></div>
-                        <div class="altitude-value altitude-value--big"></div>
-                        <div class="altitude-value"></div>
-                        <div class="altitude-value"></div>
-                        <div class="altitude-value"></div>
-                        <div class="altitude-value altitude-value--big"></div>
-                        <div class="altitude-value"></div>
-                        <div class="altitude-value"></div>
-                        <div class="altitude-value altitude-value--big"></div>
-                        <div class="altitude-value"></div>
-                        <div class="altitude-value"></div>
-                        <div class="altitude-value altitude-value--big"></div>
-                        <div class="altitude-value"></div>
+                        <div class="altitude-value altitude-value--big" data-value="350"></div>
+                        <div class="altitude-value altitude-value--big" data-value="300"></div>
+                        <div class="altitude-value" data-value="275"></div>
+                        <div class="altitude-value" data-value="250"></div>
+                        <div class="altitude-value" data-value="225"></div>
+                        <div class="altitude-value altitude-value--big" data-value="200"></div>
+                        <div class="altitude-value" data-value="175"></div>
+                        <div class="altitude-value" data-value="125"></div>
+                        <div class="altitude-value altitude-value--big" data-value="100"></div>
+                        <div class="altitude-value" data-value="75"></div>
+                        <div class="altitude-value" data-value="25"></div>
+                        <div class="altitude-value altitude-value--big" data-value="0"></div>
+                        <div class="altitude-value" data-value="-1"></div>
                       </div>
                       <div class="altitude-markers top-0">
                         <div class="altitude-marker" style="top: 2%">
@@ -789,7 +789,8 @@
                       <span style="height: 35%;"></span>
                     </div>
                   </div>
-                  <p class="text-20 text-white mt-4 -ml-6">100M</p>
+                  <p class="altitude-meters text-20 text-white mt-4 -ml-6">100M</p>
+                  <input autocomplete="off" type="range" class="altitude-input" min="-2" value="0" max="350">
                 </div>
               </div>
               </div>

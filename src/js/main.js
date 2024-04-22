@@ -97,7 +97,7 @@ compassInput.addEventListener('input', function() {
 
 const initializeSlider = () => {
   const slider = document.getElementById('speed-range');
-  const arrow = document.querySelector('.arrow-speed');
+  const arrow = document.querySelector('.speedmeter .arrow-speed');
   const speedValue = document.getElementById('speed');
 
   const incrementButton = document.querySelector('.speedmeter-range-icon');
@@ -122,7 +122,7 @@ const initializeSlider = () => {
 
   slider.noUiSlider.on('update', function (values, handle) {
     const activeValue = parseInt(values[handle]); 
-    const pips = document.querySelectorAll('.noUi-value'); 
+    const pips = document.querySelectorAll('.speedmeter .noUi-value'); 
     pips.forEach(function (pip) {
       const pipValue = parseInt(pip.getAttribute('data-value')); 
       if (pipValue <= activeValue) { 
@@ -135,7 +135,7 @@ const initializeSlider = () => {
     const angle = (activeValue / 150) * (495 - 225) + 225; 
     arrow.style.transform = 'rotate(' + angle + 'deg)';
 
-    const handleElement = document.querySelector('.noUi-handle');
+    const handleElement = document.querySelector('.speedmeter .noUi-handle');
     const ariaValueNow = handleElement.getAttribute('aria-valuenow');
     
     speedValue.textContent = `${parseInt(ariaValueNow)} m/s`;
@@ -145,7 +145,7 @@ const initializeSlider = () => {
     if (!isClickPending) {
       isClickPending = true;
       
-      const handleElement = document.querySelector('.noUi-handle');
+      const handleElement = document.querySelector('.speedmeter .noUi-handle');
       const currentValue = parseInt(handleElement.getAttribute('aria-valuenow'));
       const newValue = currentValue + 10;
       slider.noUiSlider.set(newValue);
@@ -153,6 +153,9 @@ const initializeSlider = () => {
     }
   });
 };
+
+
+
 
 
 let slideUp = (target, duration=500) => {
@@ -332,11 +335,62 @@ function updateTimerDisplay() {
     const minutes = Math.floor(timeInSeconds / 60);
     const seconds = timeInSeconds % 60;
     timerDisplay.textContent = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+}// Знаходимо елементи DOM
+const inputRange = document.querySelector('.altitude-input');
+const altitudeRangeSpan = document.querySelector('.altitude-range span');
+const altitudeValues = document.querySelectorAll('.altitude-value');
+const altitudeMeters = document.querySelectorAll('.altitude-meters');
+let activeMarker = document.createElement('div');
+activeMarker.classList.add('active-marker');
+
+// Додаємо активний маркер до діапазону висоти
+altitudeRangeSpan.appendChild(activeMarker);
+
+// Функція для оновлення висоти altitude-range span та позиції активного маркера
+function updateAltitudeRange() {
+  const inputValue = parseInt(inputRange.value);
+  const percentage = (inputValue / 350) * 100; // Переведення значення від 0 до 350 до відсотків
+  altitudeRangeSpan.style.height = `${percentage}%`;
 }
+
+// Функція для автоматичного встановлення значень data-value та класу "active" для елементів altitude-value
+function updateAltitudeValues() {
+  const inputValue = parseInt(inputRange.value);
+  
+  altitudeValues.forEach((value) => {
+    const dataValue = parseInt(value.dataset.value); // отримуємо значення data-value
+    if (dataValue <= inputValue) {
+      value.classList.add('active'); // додаємо клас "active", якщо значення data-value менше або дорівнює значенню інпуту
+    } else {
+      value.classList.remove('active'); // видаляємо клас "active", якщо значення data-value більше значення інпуту
+    }
+  });
+
+  // Оновлюємо значення в елементах .altitude-meters
+  altitudeMeters.forEach((meter) => {
+    meter.textContent = `${inputValue}M`; // встановлюємо значення з інпуту в елементи .altitude-meters
+  });
+}
+
+// Слухаємо зміни в інпуті
+inputRange.addEventListener('input', () => {
+  updateAltitudeRange();
+  updateAltitudeValues();
+});
+
+// Ініціалізуємо пісочницю
+updateAltitudeRange();
+updateAltitudeValues();
+
+
+
+
+
 
 startBtn.addEventListener('click', startTimer);
 pauseBtn.addEventListener('click', pauseTimer);
 stopBtn.addEventListener('click', stopTimer);
+
 
 initializeSlider();
 removeAlertBlocks();

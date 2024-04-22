@@ -193,34 +193,36 @@
   .speedmeter-range {
     @apply rounded-xs pb-3 pt-14 h-max shadow-none border-none w-[3.125rem] bg-[#000702];
   }
-  .noUi-target {
-    @apply rounded-xs shadow-none border-none h-44 w-[3.125rem] bg-[#000702];
-    .noUi-marker {
-      @apply hidden;
-    }
-    .noUi-value {
-      @apply bg-white/30 rounded-sm h-1.5 w-10 left-2/4 -translate-x-2/4 text-[0px];
-      &.active {
-        background: linear-gradient(90deg, rgba(47,172,255,1) 0%, rgba(5,81,255,1) 100%);
+  .speedmeter {
+    .noUi-target {
+      @apply rounded-xs shadow-none border-none h-44 w-[3.125rem] bg-[#000702];
+      .noUi-marker {
+        @apply hidden;
       }
+      .noUi-value {
+        @apply bg-white/30 rounded-sm h-1.5 w-10 left-2/4 -translate-x-2/4 text-[0px];
+        &.active {
+          background: linear-gradient(90deg, rgba(47,172,255,1) 0%, rgba(5,81,255,1) 100%);
+        }
+      }
+      .noUi-pips-vertical {
+        @apply w-full h-full p-0 left-0;
+      }
+      .noUi-handle {
+        @apply shadow-none border-none bg-transparent w-16 cursor-grab -bottom-1.5;
+      }
+      .noUi-handle:before {
+        content: '';
+        background: url('../img/lever.svg') 0 0 no-repeat;
+        width: 5.3125rem;
+        left: -10px;
+        height: 2.1875rem;
+      }
+      .noUi-handle:after {
+       @apply hidden;
+      }
+      
     }
-    .noUi-pips-vertical {
-      @apply w-full h-full p-0 left-0;
-    }
-    .noUi-handle {
-      @apply shadow-none border-none bg-transparent w-16 cursor-grab -bottom-1.5;
-    }
-    .noUi-handle:before {
-      content: '';
-      background: url('../img/lever.svg') 0 0 no-repeat;
-      width: 5.3125rem;
-      left: -10px;
-      height: 2.1875rem;
-    }
-    .noUi-handle:after {
-     @apply hidden;
-    }
-    
   }
   .altitude-block {
     @apply max-w-max relative flex items-center justify-center gap-3;
@@ -249,8 +251,10 @@
       &--big {
         @apply w-full;
       }
+      &.active {
+        background: linear-gradient(90deg, rgb(47, 172, 255) 0%, rgb(5, 81, 255) 100%);
+      }
     }
-
     .altitude-markers {
       @apply absolute -left-10 h-full text-right text-white;
     }
