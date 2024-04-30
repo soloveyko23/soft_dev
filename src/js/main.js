@@ -93,8 +93,6 @@ compassInput.addEventListener('input', function() {
 });
 };
 
-
-
 const initializeSlider = () => {
   const slider = document.getElementById('speed-range');
   const arrow = document.querySelector('.speedmeter .arrow-speed');
@@ -153,10 +151,6 @@ const initializeSlider = () => {
     }
   });
 };
-
-
-
-
 
 let slideUp = (target, duration=500) => {
   target.style.transitionProperty = 'height, margin, padding';
@@ -335,53 +329,78 @@ function updateTimerDisplay() {
     const minutes = Math.floor(timeInSeconds / 60);
     const seconds = timeInSeconds % 60;
     timerDisplay.textContent = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
-}// Знаходимо елементи DOM
+}
+
+const textAltitude = () => {
+  // Selecting the altitude input range element
 const inputRange = document.querySelector('.altitude-input');
+
+// Selecting the span element inside the altitude range
 const altitudeRangeSpan = document.querySelector('.altitude-range span');
+
+// Selecting all altitude value elements
 const altitudeValues = document.querySelectorAll('.altitude-value');
+
+// Selecting all altitude meters elements
 const altitudeMeters = document.querySelectorAll('.altitude-meters');
+
+// Creating an active marker element
 let activeMarker = document.createElement('div');
 activeMarker.classList.add('active-marker');
 
-// Додаємо активний маркер до діапазону висоти
+// Adding the active marker to the altitude range span
 altitudeRangeSpan.appendChild(activeMarker);
 
-// Функція для оновлення висоти altitude-range span та позиції активного маркера
-function updateAltitudeRange() {
-  const inputValue = parseInt(inputRange.value);
-  const percentage = (inputValue / 350) * 100; // Переведення значення від 0 до 350 до відсотків
-  altitudeRangeSpan.style.height = `${percentage}%`;
-}
+// Setting the height of the altitude range span to 10% on start
+altitudeRangeSpan.style.height = '10%';
 
-// Функція для автоматичного встановлення значень data-value та класу "active" для елементів altitude-value
-function updateAltitudeValues() {
+// Function to update the altitude range span height and position of the active marker
+function updateAltitudeRange() {
+  // Getting the value of the input range
   const inputValue = parseInt(inputRange.value);
   
+  // Converting the value from 0 to 350 to a percentage
+  const percentage = (inputValue / 350) * 100; 
+  
+  // Setting the height of the altitude range span
+  altitudeRangeSpan.style.height = `${percentage}%`; 
+}
+
+// Function to automatically set the data-value attributes and add the 'active' class to altitude value elements
+function updateAltitudeValues() {
+  // Getting the value of the input range
+  const inputValue = parseInt(inputRange.value);
+  
+  // Iterating over each altitude value element
   altitudeValues.forEach((value) => {
-    const dataValue = parseInt(value.dataset.value); // отримуємо значення data-value
+    // Getting the value of the data-value attribute
+    const dataValue = parseInt(value.dataset.value); 
+    
+    // Adding or removing the 'active' class based on the data-value
     if (dataValue <= inputValue) {
-      value.classList.add('active'); // додаємо клас "active", якщо значення data-value менше або дорівнює значенню інпуту
+      value.classList.add('active'); // Adding the 'active' class
     } else {
-      value.classList.remove('active'); // видаляємо клас "active", якщо значення data-value більше значення інпуту
+      value.classList.remove('active'); // Removing the 'active' class
     }
   });
 
-  // Оновлюємо значення в елементах .altitude-meters
+  // Updating the text content of the .altitude-meters elements
   altitudeMeters.forEach((meter) => {
-    meter.textContent = `${inputValue}M`; // встановлюємо значення з інпуту в елементи .altitude-meters
+    meter.textContent = `${inputValue}M`; // Setting the input value to the .altitude-meters elements
   });
 }
 
-// Слухаємо зміни в інпуті
+// Listening for changes in the input range
 inputRange.addEventListener('input', () => {
-  updateAltitudeRange();
-  updateAltitudeValues();
+  updateAltitudeRange(); // Calling the function to update the altitude range span
+  updateAltitudeValues(); // Calling the function to update the altitude values
 });
 
-// Ініціалізуємо пісочницю
-updateAltitudeRange();
-updateAltitudeValues();
+// Initializing the sandbox
+updateAltitudeRange(); // Calling the function to update the altitude range span
+updateAltitudeValues(); // Calling the function to update the altitude values
 
+};
 
 
 
@@ -392,6 +411,7 @@ pauseBtn.addEventListener('click', pauseTimer);
 stopBtn.addEventListener('click', stopTimer);
 
 
+textAltitude();
 initializeSlider();
 removeAlertBlocks();
 moveDividerForMenu();

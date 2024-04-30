@@ -1,0 +1,28 @@
+.menu-navbar-wrapper {
+  .list {
+    li {
+      &.active {
+        .block-bg {
+          opacity: 1;
+          visibility: visible;
+          pointer-events: auto;
+        }
+      }
+      .hide-widgets.active {
+        .svg-default {
+          display: none;
+        }
+        .svg-active {
+          display: block;
+        }
+      }
+      .block-bg {
+        transition: all 0.3s;
+      }
+    }
+  }
+  &::before{
+    content:'';
+    @apply absolute inset-0 bg-pot-black/50 rounded-b-2xl backdrop-blur-xl;
+  }
+}
